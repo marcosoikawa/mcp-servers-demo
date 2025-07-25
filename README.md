@@ -18,3 +18,12 @@ Tags: Azure, .NET9
 
 ## Scenario
 The main objective of this repo is provide some quick MCP Servers to demonstrate multi agent scenarios for any proposes
+
+## Notes
+Using [ModelContextProtocol.AspNetCore](https://www.nuget.org/packages/ModelContextProtocol.AspNetCore/absoluteLatest)
+
+```bash
+dotnet new web
+dotnet add package ModelContextProtocol.AspNetCore --prerelease
+```
+

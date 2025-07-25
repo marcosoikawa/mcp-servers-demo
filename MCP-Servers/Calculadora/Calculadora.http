@@ -1,0 +1,6 @@
+@Calculadora_HostAddress = http://localhost:5018
+
+GET {{Calculadora_HostAddress}}
+Accept: application/json
+
+###
