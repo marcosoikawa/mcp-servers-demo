@@ -8,13 +8,42 @@ Tags: Azure, App Services, Phyton
 # Overview
 The main objective of this repo is provide some quick API to connect to AI Foundry, using Azure App Services
 
-## Requiriments
+## Requirements
 
-- docker
-- Phyton 3.11
-- azure accont
-- az cli
+### Software Prerequisites
+- **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop/)
+- **Python 3.11+** - [Download](https://www.python.org/downloads/)
+- **Azure CLI** - [Install Guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- **Visual Studio Code** - [Download](https://code.visualstudio.com/)
 
+### VS Code Extensions (Required)
+- **Azure App Service** - [Install](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)
+- **Docker** - [Install](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+
+### Azure Resources
+- **Azure Subscription** - [Free Account](https://azure.microsoft.com/en-us/free/)
+
+### Python Dependencies
+All Python packages are listed in [`requirements.txt`](requirements.txt) and will be installed automatically during Docker build:
+- FastAPI
+- Uvicorn
+- Pydantic
+- Other dependencies
+
+### Verify Installation
+```powershell
+# Check Python version
+python --version
+
+# Check Docker
+docker --version
+
+# Check Azure CLI
+az --version
+
+# Login to Azure
+az login
+```
 
 ## Configure .venv:
 .venv creates isolated Python environments for each project, allowing you to install different package versions without conflicts.
