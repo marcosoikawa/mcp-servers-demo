@@ -1,0 +1,82 @@
+---
+ArtifactType: mcpservers
+Language: C#
+Platform: Windows/Linux
+Tags: Azure, App Services, Phyton
+---
+
+# Overview
+The main objective of this repo is provide some quick API to connect to AI Foundry, using Azure App Services
+
+## Requiriments
+
+## Configure .venv:
+.venv creates isolated Python environments for each project, allowing you to install different package versions without conflicts.
+
+Open Terminal on VS Code: 
+
+PowerShell 
+``` powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+```
+## Configure dependencies
+
+On terminal, install Fast API
+
+```bash
+pip install fastapi
+``` 
+And ASGI Server
+
+```bash
+pip install uvicorn
+```
+
+## Test Local
+Run:
+
+```bash
+python -m uvicorn books:app --reload
+```
+
+## Open Swagger and json
+1. Open /docs to open Swagger view and test API
+![Environment](./images/3.swagger.png)
+
+1. Open /openapi.json to open OpenAPI json definition
+
+## Create App Services
+Follow This Steps to create a App Service, for hosting the API: 
+- Via [Azure Portal](https://learn.microsoft.com/en-us/azure/app-service/quickstart-python?tabs=fastapi%2Cwindows%2Cazure-portal%2Cazure-cli-deploy%2Cdeploy-instructions-azportal%2Cterminal-bash%2Cdeploy-instructions-zip-azcli#create-a-web-app-in-azure) 
+or
+- Via [Azure CLi](https://learn.microsoft.com/en-us/azure/app-service/quickstart-python?tabs=fastapi%2Cwindows%2Cazure-cli%2Cazure-cli-deploy%2Cdeploy-instructions-azportal%2Cterminal-bash%2Cdeploy-instructions-zip-azcli#create-a-web-app-in-azure)
+
+
+## Deploy App
+1. In VS Code, ensure [Azure App Service extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) is enabled. 
+
+1. In Azure Extension, login and search for the App Service created.
+2. Right Click -> Deploy to Azure 
+![Environment](./images/1.deployToWebApp.png)
+3. Search for your folder and click Ok
+
+## Configure Startup script
+
+Configure a custom startup command for App Service to run your app. 
+
+1. Navigate to [Azure Portal](portal.azure.com)
+1. Search for your Web App
+1. Select Configuration under the Settings
+1. In Startup Command field enter: 
+
+```
+gunicorn -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 books:app
+```
+5. Click save
+
+## Restart App
+On Azure Portal, in App Services, in Overview section, click Restart to restart App Service
+![Environment](./images/2.restart.png)
+
